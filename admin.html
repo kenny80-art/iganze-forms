@@ -5,671 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Iganze Protocol</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-        rel="stylesheet">
-    <style>
-        /* ── Design Tokens ─────────────────────────────────────────────── */
-        :root {
-            --bg-base: #080b10;
-            --bg-surface: #0f1318;
-            --bg-elevated: #161c24;
-            --bg-hover: #1d252f;
-            --accent: #00e87a;
-            --accent-dim: rgba(0, 232, 122, 0.18);
-            --accent-glow: rgba(0, 232, 122, 0.35);
-            --danger: #ff4d6d;
-            --danger-dim: rgba(255, 77, 109, 0.15);
-            --text-primary: #f0f4f8;
-            --text-secondary: #8a9ab0;
-            --text-muted: #4e5e70;
-            --border: rgba(255, 255, 255, 0.07);
-            --border-accent: rgba(0, 232, 122, 0.25);
-            --radius-sm: 8px;
-            --radius-md: 14px;
-            --radius-lg: 20px;
-            --shadow-card: 0 4px 32px rgba(0, 0, 0, 0.45);
-            --shadow-glow: 0 0 40px rgba(0, 232, 122, 0.12);
-            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* ── Reset ─────────────────────────────────────────────────────── */
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* ── Base ──────────────────────────────────────────────────────── */
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-base);
-            color: var(--text-primary);
-            min-height: 100vh;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* animated mesh background */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background:
-                radial-gradient(ellipse 80% 60% at 15% 20%, rgba(0, 232, 122, 0.05) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 85% 80%, rgba(0, 180, 90, 0.04) 0%, transparent 60%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* ── Layout Wrappers ───────────────────────────────────────────── */
-        .page-wrapper {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        /* ── Header / Navbar ───────────────────────────────────────────── */
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 200;
-            background: rgba(8, 11, 16, 0.85);
-            backdrop-filter: blur(24px) saturate(180%);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .navbar-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 68px;
-            gap: 20px;
-        }
-
-        /* brand */
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .brand-logo {
-            width: 40px;
-            height: 40px;
-            border-radius: var(--radius-sm);
-            background: linear-gradient(135deg, var(--accent), #00b860);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            flex-shrink: 0;
-            box-shadow: 0 0 16px rgba(0, 232, 122, 0.35);
-        }
-
-        .brand-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.35rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            letter-spacing: 0.3px;
-        }
-
-        .brand-name span {
-            color: var(--accent);
-        }
-
-        .brand-badge {
-            font-size: 0.65rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--accent);
-            background: var(--accent-dim);
-            border: 1px solid var(--border-accent);
-            padding: 2px 8px;
-            border-radius: 20px;
-        }
-
-        /* nav actions */
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 9px 20px;
-            border-radius: var(--radius-sm);
-            font-size: 0.875rem;
-            font-weight: 500;
-            font-family: inherit;
-            cursor: pointer;
-            border: 1px solid transparent;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), #00c468);
-            color: #05100a;
-            font-weight: 600;
-            border-color: transparent;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px var(--accent-glow);
-        }
-
-        .btn-primary:active {
-            transform: translateY(0);
-        }
-
-        .btn-ghost {
-            background: transparent;
-            color: var(--text-secondary);
-            border-color: var(--border);
-        }
-
-        .btn-ghost:hover {
-            background: var(--bg-elevated);
-            color: var(--text-primary);
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-
-        .btn-danger {
-            background: transparent;
-            color: var(--danger);
-            border-color: rgba(255, 77, 109, 0.3);
-        }
-
-        .btn-danger:hover {
-            background: var(--danger-dim);
-            border-color: var(--danger);
-        }
-
-        .btn-icon {
-            font-size: 1rem;
-            line-height: 1;
-        }
-
-        /* ── Main Content ──────────────────────────────────────────────── */
-        .main {
-            flex: 1;
-            padding: 40px 0 64px;
-        }
-
-        /* ── Page Title ────────────────────────────────────────────────── */
-        .page-title-row {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            margin-bottom: 36px;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .page-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.2;
-        }
-
-        .page-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-
-        /* ── Stats Row ─────────────────────────────────────────────────── */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 18px;
-            margin-bottom: 40px;
-        }
-
-        .stat-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 24px 26px;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            background: linear-gradient(135deg, var(--accent-dim), transparent 60%);
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        .stat-card:hover {
-            border-color: var(--border-accent);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .stat-card:hover::after {
-            opacity: 1;
-        }
-
-        .stat-icon-wrap {
-            width: 52px;
-            height: 52px;
-            border-radius: var(--radius-sm);
-            background: var(--accent-dim);
-            border: 1px solid var(--border-accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            flex-shrink: 0;
-        }
-
-        .stat-icon-wrap.danger {
-            background: var(--danger-dim);
-            border-color: rgba(255, 77, 109, 0.25);
-        }
-
-        .stat-body {
-            min-width: 0;
-        }
-
-        .stat-label {
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1.1px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1;
-        }
-
-        /* ── Section Header ────────────────────────────────────────────── */
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 22px;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .section-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .section-title::before {
-            content: '';
-            display: inline-block;
-            width: 3px;
-            height: 18px;
-            background: var(--accent);
-            border-radius: 3px;
-        }
-
-        .count-badge {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--accent);
-            background: var(--accent-dim);
-            border: 1px solid var(--border-accent);
-            padding: 2px 10px;
-            border-radius: 20px;
-        }
-
-        /* ── Loading / Error / Empty ───────────────────────────────────── */
-        .state-box {
-            border-radius: var(--radius-md);
-            padding: 56px 40px;
-            text-align: center;
-        }
-
-        .loading-state {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-        }
-
-        .spinner {
-            display: inline-block;
-            width: 36px;
-            height: 36px;
-            border: 3px solid var(--accent-dim);
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin 0.75s linear infinite;
-            margin-bottom: 16px;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .loading-text {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
-        .error-state {
-            background: var(--danger-dim);
-            border: 1px solid rgba(255, 77, 109, 0.3);
-            color: var(--danger);
-            font-size: 0.95rem;
-        }
-
-        .empty-state {
-            color: var(--text-muted);
-        }
-
-        .empty-state-icon {
-            font-size: 3.5rem;
-            margin-bottom: 18px;
-            opacity: 0.5;
-        }
-
-        .empty-state-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 6px;
-        }
-
-        .empty-state-desc {
-            font-size: 0.875rem;
-        }
-
-        /* ── Registration Cards ────────────────────────────────────────── */
-        .registrations-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .reg-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: var(--shadow-card);
-        }
-
-        .reg-card:hover {
-            border-color: var(--border-accent);
-            box-shadow: var(--shadow-card), var(--shadow-glow);
-            transform: translateY(-2px);
-        }
-
-        /* card top bar */
-        .reg-card-header {
-            background: var(--bg-elevated);
-            padding: 20px 28px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            border-bottom: 1px solid var(--border);
-            flex-wrap: wrap;
-        }
-
-        .reg-card-identity {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .avatar {
-            width: 46px;
-            height: 46px;
-            border-radius: var(--radius-sm);
-            background: linear-gradient(135deg, var(--accent), #00a85a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            font-weight: 700;
-            color: #041a0d;
-            flex-shrink: 0;
-            letter-spacing: 0.5px;
-        }
-
-        .reg-card-name {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            line-height: 1.3;
-        }
-
-        .reg-card-name .title-prefix {
-            font-weight: 400;
-            color: var(--text-secondary);
-            margin-right: 4px;
-        }
-
-        .reg-card-id {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-family: 'Courier New', monospace;
-        }
-
-        .timestamp-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            color: var(--accent);
-            background: var(--accent-dim);
-            border: 1px solid var(--border-accent);
-            padding: 6px 14px;
-            border-radius: 30px;
-            white-space: nowrap;
-        }
-
-        /* card body */
-        .reg-card-body {
-            padding: 26px 28px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-            gap: 14px;
-        }
-
-        .info-cell {
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 14px 16px;
-            transition: var(--transition);
-        }
-
-        .info-cell:hover {
-            border-color: rgba(0, 232, 122, 0.18);
-            background: var(--bg-hover);
-        }
-
-        .info-cell-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            font-weight: 600;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .info-cell-label::before {
-            content: '';
-            width: 5px;
-            height: 5px;
-            background: var(--accent);
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .info-cell-value {
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            font-weight: 500;
-            word-break: break-word;
-        }
-
-        /* profile image section */
-        .profile-section {
-            grid-column: 1 / -1;
-            margin-top: 6px;
-        }
-
-        .profile-section-inner {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 18px 20px;
-        }
-
-        .profile-img {
-            width: 88px;
-            height: 88px;
-            border-radius: var(--radius-sm);
-            object-fit: cover;
-            border: 2px solid var(--border-accent);
-            box-shadow: 0 0 20px rgba(0, 232, 122, 0.18);
-            flex-shrink: 0;
-        }
-
-        .profile-img-meta {
-            flex: 1;
-        }
-
-        .profile-img-meta .info-cell-label {
-            margin-bottom: 6px;
-        }
-
-        .profile-img-meta .info-cell-value {
-            color: var(--accent);
-            font-size: 0.875rem;
-        }
-
-        /* card divider between header and body */
-        .reg-card-divider {
-            height: 1px;
-            background: var(--border);
-        }
-
-        /* ── Footer ────────────────────────────────────────────────────── */
-        .page-footer {
-            border-top: 1px solid var(--border);
-            padding: 20px 0;
-            text-align: center;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
-
-        /* ── Responsive ────────────────────────────────────────────────── */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 18px;
-            }
-
-            .main {
-                padding: 28px 0 48px;
-            }
-
-            .navbar-inner {
-                height: 60px;
-            }
-
-            .brand-name {
-                font-size: 1.15rem;
-            }
-
-            .page-title {
-                font-size: 1.5rem;
-            }
-
-            .stats-row {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-
-            .reg-card-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-
-            .profile-section-inner {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .stats-row {
-                grid-template-columns: 1fr;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-actions .btn-ghost {
-                display: none;
-            }
-        }
-    </style>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Link the external CSS -->
+    <link rel="stylesheet" href="admin.css">
+
+    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 </head>
@@ -685,7 +30,7 @@
                     <div class="brand">
                         <div class="brand-logo">💍</div>
                         <span class="brand-name">Iganze <span>Protocol</span></span>
-                        <span class="brand-badge">Admin</span>
+                        <span class="brand-badge">Records Dept</span>
                     </div>
 
                     <div class="nav-actions">
@@ -707,8 +52,8 @@
                 <!-- Page Title -->
                 <div class="page-title-row">
                     <div>
-                        <h1 class="page-title">Registrations</h1>
-                        <p class="page-subtitle">Manage and review all submitted registrations</p>
+                        <h1 class="page-title">Submitted Documents</h1>
+                        <p class="page-subtitle">Official repository of client registrations and records</p>
                     </div>
                 </div>
 
@@ -717,14 +62,14 @@
                     <div class="stat-card">
                         <div class="stat-icon-wrap">📋</div>
                         <div class="stat-body">
-                            <div class="stat-label">Total Registrations</div>
+                            <div class="stat-label">Total Documents Processed</div>
                             <div class="stat-value" id="totalCount">—</div>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon-wrap">📅</div>
                         <div class="stat-body">
-                            <div class="stat-label">Today's Registrations</div>
+                            <div class="stat-label">Documents Authored Today</div>
                             <div class="stat-value" id="todayCount">—</div>
                         </div>
                     </div>
@@ -733,7 +78,7 @@
                 <!-- Section header -->
                 <div class="section-header">
                     <h2 class="section-title">
-                        Recent Registrations
+                        Registration Logs
                         <span class="count-badge" id="countBadge">—</span>
                     </h2>
                 </div>
@@ -741,7 +86,7 @@
                 <!-- Loading -->
                 <div id="loadingState" class="state-box loading-state">
                     <div class="spinner"></div>
-                    <p class="loading-text">Fetching registrations…</p>
+                    <p class="loading-text">Retrieving secure documents…</p>
                 </div>
 
                 <!-- Error -->
@@ -756,204 +101,56 @@
         <!-- ░░ FOOTER ░░ -->
         <footer class="page-footer">
             <div class="container">
-                Iganze Protocol Admin &mdash; Internal Use Only
+                Iganze Protocol Admin &mdash; Authorized Personnel Only
             </div>
         </footer>
 
     </div><!-- /page-wrapper -->
 
-    <script>
-        /* ── Firebase Init ─────────────────────────────────────────────────── */
-        const firebaseConfig = {
-            apiKey: "AIzaSyA2u3jsutbNafWDY3CE-J6XnpTdjD5Cjw0",
-            authDomain: "iganzeprotocol-form.firebaseapp.com",
-            projectId: "iganzeprotocol-form",
-            storageBucket: "iganzeprotocol-form.firebasestorage.app",
-            messagingSenderId: "468067088842",
-            appId: "1:468067088842:web:6257e3abf04cd909f07733"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-
-        /* ── Auth Guard ────────────────────────────────────────────────────── */
-        if (sessionStorage.getItem('adminLoggedIn') !== 'true') {
-            window.location.href = 'admin-login.html';
-        }
-
-        /* ── Load on Start ─────────────────────────────────────────────────── */
-        loadRegistrations();
-
-        /* ── Main Loader ───────────────────────────────────────────────────── */
-        async function loadRegistrations() {
-            const loadingEl = document.getElementById('loadingState');
-            const errorEl = document.getElementById('errorState');
-            const registrationsEl = document.getElementById('registrations');
-            const totalCountEl = document.getElementById('totalCount');
-            const todayCountEl = document.getElementById('todayCount');
-            const countBadgeEl = document.getElementById('countBadge');
-
-            // reset UI
-            loadingEl.style.display = 'block';
-            errorEl.style.display = 'none';
-            registrationsEl.style.display = 'none';
-            registrationsEl.innerHTML = '';
-
-            try {
-                const snapshot = await db
-                    .collection('registrations')
-                    .orderBy('timestamp', 'desc')
-                    .get();
-
-                loadingEl.style.display = 'none';
-
-                const total = snapshot.size;
-                totalCountEl.textContent = total;
-                countBadgeEl.textContent = total;
-
-                // Count today's registrations
-                const todayMidnight = new Date();
-                todayMidnight.setHours(0, 0, 0, 0);
-                let todayCount = 0;
-
-                snapshot.forEach(doc => {
-                    const data = doc.data();
-                    if (data.timestamp) {
-                        try {
-                            const d = data.timestamp.toDate();
-                            d.setHours(0, 0, 0, 0);
-                            if (d.getTime() === todayMidnight.getTime()) todayCount++;
-                        } catch (_) { }
-                    }
-                });
-                todayCountEl.textContent = todayCount;
-
-                if (snapshot.empty) {
-                    registrationsEl.innerHTML = `
-                    <div class="state-box empty-state">
-                        <div class="empty-state-icon">📭</div>
-                        <div class="empty-state-title">No registrations yet</div>
-                        <p class="empty-state-desc">New submissions will appear here automatically.</p>
-                    </div>`;
-                    registrationsEl.style.display = 'block';
-                    return;
-                }
-
-                snapshot.forEach(doc => {
-                    const card = buildCard(doc.id, doc.data());
-                    registrationsEl.appendChild(card);
-                });
-
-                registrationsEl.style.display = 'flex';
-
-            } catch (err) {
-                loadingEl.style.display = 'none';
-                errorEl.textContent = '⚠ Error loading registrations: ' + err.message;
-                errorEl.style.display = 'block';
-                console.error('Firestore error:', err);
-            }
-        }
-
-        /* ── Card Builder ──────────────────────────────────────────────────── */
-        function buildCard(id, data) {
-            const card = document.createElement('div');
-            card.className = 'reg-card';
-
-            /* Timestamp */
-            let timestamp = 'N/A';
-            if (data.timestamp) {
-                try {
-                    timestamp = data.timestamp.toDate().toLocaleString('en-US', {
-                        day: 'numeric', month: 'short', year: 'numeric',
-                        hour: '2-digit', minute: '2-digit'
-                    });
-                } catch (_) {
-                    timestamp = data.submissionDate || 'N/A';
-                }
-            } else if (data.submissionDate) {
-                timestamp = data.submissionDate;
-            }
-
-            /* Initials for avatar */
-            const initials = getInitials(data.fullName || '');
-
-            /* Profile image block (optional) */
-            let profileHtml = '';
-            if (data.hasImage && data.profileImage) {
-                profileHtml = `
-                <div class="profile-section info-cell">
-                    <div class="profile-section-inner">
-                        <img src="${data.profileImage}" alt="Profile photo" class="profile-img">
-                        <div class="profile-img-meta">
-                            <div class="info-cell-label">Profile Image</div>
-                            <div class="info-cell-value">✓ Attached</div>
-                        </div>
-                    </div>
-                </div>`;
-            }
-
-            /* Define which fields to show in the grid */
-            const fields = [
-                { label: 'Email', value: data.email },
-                { label: 'Phone', value: data.phone },
-                { label: 'Purpose', value: data.purpose },
-                { label: 'Address', value: data.address },
-                { label: 'Gender', value: data.gender },
-                { label: 'Date of Birth', value: data.dob },
-                { label: 'ID Number', value: data.idNumber },
-                { label: 'Experience', value: data.experienceRating },
-                { label: 'Registration Date', value: data.registrationDate },
-            ];
-
-            const fieldsHtml = fields.map(f => `
-            <div class="info-cell">
-                <div class="info-cell-label">${f.label}</div>
-                <div class="info-cell-value">${f.value || '<span style="color:var(--text-muted)">N/A</span>'}</div>
-            </div>`).join('');
-
-            card.innerHTML = `
-            <!-- Header -->
-            <div class="reg-card-header">
-                <div class="reg-card-identity">
-                    <div class="avatar">${initials}</div>
-                    <div>
-                        <div class="reg-card-name">
-                            <span class="title-prefix">${data.title || ''}</span>${data.fullName || 'Unknown'}
-                        </div>
-                        <div class="reg-card-id">ID: ${id}</div>
-                    </div>
-                </div>
-                <div class="timestamp-pill">📅 ${timestamp}</div>
+    <!-- ░░ EDIT MODAL ░░ -->
+    <div id="editModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Modify Form Record</div>
+                <button class="btn-close" onclick="closeModal()">×</button>
             </div>
-
-            <!-- Body -->
-            <div class="reg-card-body">
-                <div class="info-grid">
-                    ${fieldsHtml}
-                    ${profileHtml}
+            <div class="modal-body">
+                <input type="hidden" id="edit-id">
+                
+                <div class="form-group">
+                    <label class="form-label">Full Legal Name</label>
+                    <input type="text" id="edit-fullName" class="form-control">
                 </div>
-            </div>`;
+                
+                <div class="form-group">
+                    <label class="form-label">Electronic Mail</label>
+                    <input type="email" id="edit-email" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Primary Contact</label>
+                    <input type="text" id="edit-phone" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Declared Purpose</label>
+                    <input type="text" id="edit-purpose" class="form-control">
+                </div>
 
-            return card;
-        }
+                <div class="form-group">
+                    <label class="form-label">Identification Number</label>
+                    <input type="text" id="edit-idNumber" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveEdits()">Apply Amendments</button>
+            </div>
+        </div>
+    </div>
 
-        /* ── Helpers ───────────────────────────────────────────────────────── */
-        function getInitials(name) {
-            if (!name) return '?';
-            const parts = name.trim().split(/\s+/);
-            if (parts.length >= 2) {
-                return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-            }
-            return name.substring(0, 2).toUpperCase();
-        }
-
-        function logout() {
-            sessionStorage.removeItem('adminLoggedIn');
-            sessionStorage.removeItem('adminLoginTime');
-            window.location.href = 'admin-login.html';
-        }
-    </script>
+    <!-- Link the external JS -->
+    <script src="admin.js"></script>
 
 </body>
-
 </html>
