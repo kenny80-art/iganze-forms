@@ -1,0 +1,13 @@
+# Robots.txt for Iganze Protocol
+# This file tells search engines which pages to crawl
+
+User-agent: *
+Allow: /
+Disallow: /success.html
+Disallow: /thank-you
+
+# Sitemap location
+Sitemap: https://iganze-form.netlify.app/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

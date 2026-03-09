@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Registration Successful - Iganze Protocol Wedding Services</title>
+    <meta name="title" content="Registration Successful - Iganze Protocol Wedding Services">
+    <meta name="description"
+        content="Thank you for registering with Iganze Protocol. We've received your wedding service inquiry and will contact you soon.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .success-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .success-card {
+            text-align: center;
+            max-width: 500px;
+            animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .success-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s backwards;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .success-icon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--accent-primary);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.5;
+            }
+        }
+
+        .thumbs-up {
+            width: 50px;
+            height: 50px;
+            stroke: var(--accent-primary);
+            stroke-width: 2;
+            fill: none;
+            animation: drawThumb 1s ease 0.5s backwards;
+        }
+
+        @keyframes drawThumb {
+            from {
+                stroke-dasharray: 1000;
+                stroke-dashoffset: 1000;
+            }
+
+            to {
+                stroke-dasharray: 1000;
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .success-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.6s ease 0.6s backwards;
+        }
+
+        .success-message {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease 0.7s backwards;
+        }
+
+        .success-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            animation: fadeInUp 0.6s ease 0.8s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .confirmation-details {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 12px;
+            animation: fadeInUp 0.6s ease 0.9s backwards;
+        }
+
+        .confirmation-details p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+
+        .confirmation-details strong {
+            color: var(--accent-primary);
+        }
+
+        @media (min-width: 640px) {
+            .success-actions {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="success-container">
+        <div class="success-card">
+            <!-- Success Icon -->
+            <div class="success-icon">
+                <svg class="thumbs-up" viewBox="0 0 24 24">
+                    <path
+                        d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                    </path>
+                </svg>
+            </div>
+
+            <!-- Success Message -->
+            <h1 class="success-title">Success! We've received your submission</h1>
+            <p class="success-message">Thank you for completing this form</p>
+
+            <!-- Confirmation Details -->
+            <div class="confirmation-details">
+                <p>✓ Your registration has been successfully submitted</p>
+                <p>✓ Our team will review your information and contact you soon</p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="success-actions">
+                <a href="index.html" class="btn btn-primary" onclick="clearFormData()">Submit Another Form</a>
+                <a href="https://iganze-form.netlify.app/" class="btn btn-secondary">Return to Homepage</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Clear saved form data when submitting another
+        function clearFormData() {
+            sessionStorage.removeItem('iganze_form_draft');
+            sessionStorage.removeItem('formSubmitted');
+        }
+
+        // Prevent back button after successful submission
+        window.addEventListener('load', () => {
+            window.history.pushState(null, '', window.location.href);
+            window.onpopstate = () => {
+                window.history.pushState(null, '', window.location.href);
+            };
+        });
+
+        // Optional: Auto-redirect after 30 seconds
+        // setTimeout(() => {
+        //     window.location.href = 'https://iganze.com';
+        // }, 30000);
+    </script>
+</body>
+
+</html>

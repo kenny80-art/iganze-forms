@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Iganze Protocol Wedding Services | Professional Wedding Planning & Coordination</title>
+    <meta name="title" content="Iganze Protocol Wedding Services | Professional Wedding Planning & Coordination">
+    <meta name="description"
+        content="Register for Iganze Protocol's professional wedding services. Expert wedding planning, coordination, and protocol services to make your special day unforgettable. Book your consultation today.">
+    <meta name="keywords"
+        content="iganze protocol, wedding services, wedding planning, wedding coordination, wedding protocol, event planning, marriage ceremony, wedding consultation, Rwanda weddings, professional wedding services, wedding planner">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="Iganze Protocol">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://iganze-form.netlify.app/">
+    <meta property="og:title" content="Iganze Protocol Wedding Services | Professional Wedding Planning">
+    <meta property="og:description"
+        content="Register for Iganze Protocol's professional wedding services. Expert wedding planning, coordination, and protocol to make your special day unforgettable.">
+    <meta property="og:image" content="https://iganze-form.netlify.app/assets/og-image.png">
+    <meta property="og:site_name" content="Iganze Protocol">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://iganze-form.netlify.app/">
+    <meta property="twitter:title" content="Iganze Protocol Wedding Services">
+    <meta property="twitter:description"
+        content="Register for professional wedding services. Expert wedding planning, coordination, and protocol for your special day.">
+    <meta property="twitter:image" content="https://iganze-form.netlify.app/assets/twitter-image.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://iganze-form.netlify.app/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <!-- Flatpickr Date Picker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Iganze Protocol",
+        "description": "Professional wedding planning, coordination, and protocol services",
+        "url": "https://iganze-form.netlify.app/",
+        "logo": "https://iganze-form.netlify.app/logo.svg",
+        "serviceType": "Wedding Services",
+        "priceRange": "$$",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+250-XXX-XXX-XXX",
+            "contactType": "Customer Service",
+            "areaServed": "RW",
+            "availableLanguage": ["English", "Kinyarwanda", "French"]
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Rwanda"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "RW"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Wedding Service Registration",
+        "description": "Register for Iganze Protocol wedding services and consultation",
+        "url": "https://iganze-form.netlify.app/",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://iganze-form.netlify.app/"
+            },{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Registration",
+                "item": "https://iganze-form.netlify.app/"
+            }]
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-wrapper">
+            <!-- Logo -->
+            <div class="logo-container">
+                <img src="logo.svg" alt="Iganze" class="logo">
+            </div>
+
+            <!-- Form -->
+            <form id="registrationForm" class="registration-form">
+
+                <!-- Profile Image -->
+                <div class="form-group fade-in" style="animation-delay: 0.05s">
+                    <label>
+                        <svg class="field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                        Profile Image
+                    </label>
+                    <div class="profile-image-wrapper">
+                        <div class="profile-image-container">
+                            <div class="profile-image-placeholder" id="profilePlaceholder">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span class="placeholder-text">Click to upload</span>
+                            </div>
+                            <div class="profile-image-preview" id="profilePreview" style="display: none;">
+                                <img src="" alt="Profile Preview" id="previewImage">
+                            </div>
+                            <input type="file" id="profileImage" name="profileImage" accept="image/*" class="profile-image-input">
+                        </div>
+                        <button type="button" class="remove-image-btn" id="removeImage" style="display: none;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                            Remove Image
+                        </button>
+                    </div>
+                    <span class="image-info">Optional - Max 500KB (JPEG, PNG, JPG)</span>
+                    <span class="error-message" id="imageError"></span>
+                </div>
+
+                <!-- Error Modal -->
+                <div class="modal-overlay" id="errorModal" style="display: none;">
+                    <div class="modal-content">
+                        <div class="modal-icon error">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
+                        </div>
+                        <h3 class="modal-title">Image Too Large</h3>
+                        <p class="modal-message" id="modalMessage">The image you selected exceeds the maximum file size of 500KB. Please compress your image or choose a smaller one.</p>
+                        <button type="button" class="modal-btn" id="modalClose">Got It</button>
+                    </div>
+                </div>
+
+                <!-- Full Name -->
+                <div class="form-group fade-in" style="animation-delay: 0.1s">
+                    <label for="fullName">
+                        <svg class="field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        Full Name
+                    </label>
+                    <div class="name-group">
+                        <select id="title" name="title" required>
+                            <option value="">Title</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+                            <option value="Ms">Ms</option>
+                            <option value="Dr">Dr</option>
+                            <option value="Prof">Prof</option>
+                        </select>
+                        <input type="text" id="fullName" name="fullName" placeholder="Full name" required>
+                    </div>
+                    <span class="error-message"></span>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group fade-in" style="animation-delay: 0.2s">
+                    <label for="email">
+                        <svg class="field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        Email
+                    </label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <!-- I'd like to -->
+                <div class="form-group fade-in" style="animation-delay: 0.3s">
+                    <label for="purpose">
+                        <svg class="field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3L22 4"></path>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                        </svg>
+                        I'd like to
+                    </label>
+                    <select id="purpose" name="purpose" required>
+                        <option value="">Please select or type to search</option>
+                        <option value="register">Register for services</option>
+                        <option value="consult">Request a consultation</option>
+                        <option value="info">Get more information</option>
+                        <option value="support">Request support</option>
+                    </select>
+                    <span class="error-message"></span>
+                </div>
+
+                <!-- Address -->
+                <div class="form-group fade-in" style="animation-delay: 0.4s">
+                    <label>
+                        <svg class="field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Address
+                    </label>
+                    <input type="text" id="country" name="country" placeholder="Country" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group fade-in" style="animation-delay: 0.42s">
+                    <label for="city">City / Province</label>
+                    <input type="text" id="city" name="city" placeholder="City / Province" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group fade-in" style="animation-delay: 0.44s">
+                    <label for="district">District</label>
+                    <input type="text" id="district" name="district" placeholder="District" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group fade-in" style="animation-delay: 0.46s">
+                    <label for="sector">Sector</label>
+                    <input type="text" id="sector" name="sector" placeholder="Sector" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="form-group fade-in" style="animation-delay: 0.5s">
+                    <label for="phone">
+                        <svg class="field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                        Phone Number
+                    </label>
+                    <input type="tel" id="phone" name="phone" placeholder="+250 XXX XXX XXX" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <!-- Gender -->
+                <div class="form-group fade-in" style="animation-delay: 0.6s">
+                    <label>
+                        <svg class="field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="8" r="7"></circle>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                        </svg>
+                        Gender
+                    </label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="Female" required>
+                            <span class="radio-custom"></span>
+                            Female
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="Male" required>
+                            <span class="radio-custom"></span>
+                            Male
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="Prefer not to say" required>
+                            <span class="radio-custom"></span>
+                            Prefer not to say
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="Not yet" required>
+                            <span class="radio-custom"></span>
+                            Not yet
+                        </label>
+                    </div>
+                    <span class="error-message"></span>
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="form-group fade-in" style="animation-delay: 0.7s">
+                    <label for="dob">
+                        <svg class="field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        Date of Birth
+                    </label>
+                    <input type="date" id="dob" name="dob" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <!-- Date of Registration -->
+                <div class="form-group fade-in" style="animation-delay: 0.75s">
+                    <label for="registrationDate">
+                        <svg class="field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        Date of Registration
+                    </label>
+                    <input type="date" id="registrationDate" name="registrationDate" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <!-- ID Number -->
+                <div class="form-group fade-in" style="animation-delay: 0.8s">
+                    <label for="idNumber">
+                        <svg class="field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        ID Number
+                    </label>
+                    <input type="text" id="idNumber" name="idNumber" placeholder="Enter your identity card number"
+                        required>
+                    <span class="error-message"></span>
+                </div>
+
+                <!-- Experience Rating -->
+                <div class="form-group fade-in" style="animation-delay: 0.88s">
+                    <label>
+                        <svg class="field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                            </polygon>
+                        </svg>
+                        How can you rate your experience about protocol and service?
+                    </label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="experienceRating" value="Expert" required>
+                            <span class="radio-custom"></span>
+                            Expert
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="experienceRating" value="Advanced" required>
+                            <span class="radio-custom"></span>
+                            Advanced
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="experienceRating" value="Intermediate" required>
+                            <span class="radio-custom"></span>
+                            Intermediate
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="experienceRating" value="Beginner" required>
+                            <span class="radio-custom"></span>
+                            Beginner
+                        </label>
+                    </div>
+                    <span class="error-message"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn fade-in" style="animation-delay: 1.1s">
+                    <span class="btn-text">SUBMIT NOW</span>
+                    <span class="btn-loader"></span>
+                </button>
+
+            </form>
+
+            <!-- Footer -->
+            <div class="footer fade-in" style="animation-delay: 1.2s">
+                <p>Powered by Iganze Protocol</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
