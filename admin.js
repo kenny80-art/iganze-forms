@@ -178,9 +178,9 @@ function downloadDocument(id) {
     const na = '<span style="color:#666">N/A</span>';
 
     const profileSection = (data.hasImage && data.profileImage)
-        ? `<div class="pdf-attachment">
-               <img src="${data.profileImage}" alt="Profile Photo">
-               <span>★ Profile Photo Attached</span>
+        ? `<div class="pdf-photo-top">
+               <img src="${data.profileImage}" alt="Profile Photo" class="pdf-photo-img">
+               <div><strong>Client Profile Photo</strong><br><span style="color:#888;font-size:0.8rem;">Officially Attached</span></div>
            </div>`
         : '';
 
@@ -205,9 +205,8 @@ function downloadDocument(id) {
             .field.full { grid-column:1/-1; }
             .label { font-size:0.65rem; text-transform:uppercase; letter-spacing:1.2px; color:#888; font-weight:600; margin-bottom:3px; }
             .answer { font-family:'Playfair Display',serif; font-size:1.15rem; color:#111; padding-bottom:6px; border-bottom:1px solid #ddd; min-height:30px; }
-            .pdf-attachment { margin-top:20px; display:flex; align-items:center; gap:16px; padding:16px; border:1px solid #ddd; grid-column:1/-1; }
-            .pdf-attachment img { width:90px; height:90px; object-fit:cover; border:2px solid #ddd; }
-            .pdf-attachment span { font-size:0.85rem; color:#444; font-family:'Courier New',monospace; text-transform:uppercase; }
+            .pdf-photo-top { display:flex; align-items:center; gap:20px; margin-bottom:28px; padding:16px; border:1px solid #eee; background:#fafafa; }
+            .pdf-photo-img { width:110px; height:110px; object-fit:cover; border:3px solid #ddd; border-radius:4px; }
             .doc-footer { margin-top:48px; padding-top:16px; border-top:1px solid #eee; font-size:0.75rem; color:#aaa; text-align:center; }
             .accent-bar { height:6px; background: linear-gradient(90deg,#00e87a,#00b860); margin-bottom:24px; }
             @media print { body { padding:24px; } }
@@ -225,6 +224,7 @@ function downloadDocument(id) {
             <div class="doc-stamp">IGANZE PROTOCOL</div>
         </div>
 
+        ${profileSection}
         <div class="fieldset">
             <div class="field full">
                 <div class="label">Full Legal Name</div>
@@ -304,9 +304,12 @@ function buildDocument(id, data) {
     let profileHtml = '';
     if (data.hasImage && data.profileImage) {
         profileHtml = `
-        <div class="form-attachment">
-            <img src="${data.profileImage}" alt="Attached Profile Photo">
-            <span class="form-attachment-label">★ Client Signature/Photo Attached</span>
+        <div class="form-photo-top">
+            <img src="${data.profileImage}" alt="Profile Photo" class="form-photo-img">
+            <div class="form-photo-meta">
+                <div class="field-prompt">Client Profile Photo</div>
+                <div class="field-answer" style="border:none;">✓ Attached</div>
+            </div>
         </div>`;
     }
 
@@ -328,7 +331,9 @@ function buildDocument(id, data) {
         <div class="reg-doc-timestamp">RCVD: ${timestamp}</div>
     </div>
 
-    <div class="form-fieldset">
+    <div class="reg-doc-body">
+        ${profileHtml}
+        <div class="form-fieldset">
         <div class="form-field full-width">
             <div class="field-prompt">Full Legal Name</div>
             <div class="field-answer">${fullName}</div>
@@ -374,7 +379,7 @@ function buildDocument(id, data) {
             <div class="field-answer">${data.experienceRating || '<span style="color:var(--text-muted)">N/A</span>'}</div>
         </div>
 
-        ${profileHtml}
+        </div>
     </div>
 
     <!-- Actions at the bottom -->
