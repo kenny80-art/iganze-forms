@@ -51,7 +51,7 @@ async function loadRegistrations() {
     errorEl.style.display = 'none';
     registrationsEl.style.display = 'none';
     registrationsEl.innerHTML = '';
-    
+
     // clear memory
     currentRegistrations = {};
 
@@ -74,7 +74,7 @@ async function loadRegistrations() {
 
         snapshot.forEach(doc => {
             const data = doc.data();
-            
+
             // store in memory for editing later
             currentRegistrations[doc.id] = data;
 
@@ -116,13 +116,13 @@ async function loadRegistrations() {
 
 /* ── Delete Action ─────────────────────────────────────────────────── */
 async function deleteRegistration(id) {
-    if(!confirm("Are you sure you want to permanently delete this registration document?")) return;
-    
+    if (!confirm("Are you sure you want to permanently delete this registration document?")) return;
+
     try {
         await db.collection('registrations').doc(id).delete();
         alert('Document destroyed successfully.');
         loadRegistrations(); // Refresh list automatically
-    } catch(e) {
+    } catch (e) {
         alert('Failed to delete: ' + e.message);
     }
 }
@@ -130,7 +130,7 @@ async function deleteRegistration(id) {
 /* ── Edit Modal Actions ────────────────────────────────────────────── */
 function openEditModal(id) {
     const data = currentRegistrations[id];
-    if(!data) return;
+    if (!data) return;
 
     // map data to form fields
     document.getElementById('edit-id').value = id;
@@ -163,7 +163,7 @@ async function saveEdits() {
         closeModal();
         alert('Document updated successfully!');
         loadRegistrations(); // Refresh list to reflect edits
-    } catch(e) {
+    } catch (e) {
         alert('Failed to update: ' + e.message);
     }
 }
@@ -269,7 +269,7 @@ function downloadDocument(id) {
             ${profileSection}
         </div>
 
-        <div class="doc-footer">Downloaded from Iganze Protocol Admin Panel &mdash; Authorized Personnel Only</div>
+        <div class="doc-footer">Downloaded from Iganze Protocol &mdash; Authorized Personnel Only</div>
 
         <script>window.onload = function(){ window.print(); }<\/script>
     </body>
