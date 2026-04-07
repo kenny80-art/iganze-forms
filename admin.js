@@ -1,11 +1,12 @@
 /* ── Firebase Init ─────────────────────────────────────────────────── */
 const firebaseConfig = {
-    apiKey: "AIzaSyA2u3jsutbNafWDY3CE-J6XnpTdjD5Cjw0",
-    authDomain: "iganzeprotocol-form.firebaseapp.com",
-    projectId: "iganzeprotocol-form",
-    storageBucket: "iganzeprotocol-form.firebasestorage.app",
-    messagingSenderId: "468067088842",
-    appId: "1:468067088842:web:6257e3abf04cd909f07733"
+  apiKey: "AIzaSyBmRv8lOhPH-TMXdkPyIvbt6hedvwpOH7U",
+  authDomain: "iganze-forms.firebaseapp.com",
+  projectId: "iganze-forms",
+  storageBucket: "iganze-forms.firebasestorage.app",
+  messagingSenderId: "67065465192",
+  appId: "1:67065465192:web:46d1003af0a909ce8e6edd",
+  measurementId: "G-BX8TXW9DEL"
 };
 
 firebase.initializeApp(firebaseConfig);

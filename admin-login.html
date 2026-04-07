@@ -131,7 +131,7 @@
         </div>
 
     <script>
-// Hardcoded admin password - CHANGE THIS to your desired password
+
         const ADMIN_PASSWORD = 'Iganze@2024';
 
         document.getElementById('loginForm').addEventListener('submit', function(e) {
@@ -141,18 +141,18 @@
             const errorMessage = document.getElementById('errorMessage');
             
             if (password === ADMIN_PASSWORD) {
-                // Set session
+
                 sessionStorage.setItem('adminLoggedIn', 'true');
                 sessionStorage.setItem('adminLoginTime', Date.now());
                 
-                // Redirect to admin
+
                 window.location.href = 'admin.html';
             } else {
                 errorMessage.style.display = 'block';
             }
         });
 
-        // Check if already logged in
+
         if (sessionStorage.getItem('adminLoggedIn') === 'true') {
             window.location.href = 'admin.html';
         }
